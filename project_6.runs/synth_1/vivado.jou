@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Fri Oct 17 17:11:56 2025
+# Process ID: 140833
+# Current directory: /home/utec/project_6/project_6.runs/synth_1
+# Command line: vivado -log top_basys3.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_basys3.tcl
+# Log file: /home/utec/project_6/project_6.runs/synth_1/top_basys3.vds
+# Journal file: /home/utec/project_6/project_6.runs/synth_1/vivado.jou
+# Running On: UTEC, OS: Linux, CPU Frequency: 4432.639 MHz, CPU Physical cores: 20, Host memory: 33321 MB
+#-----------------------------------------------------------
+source top_basys3.tcl -notrace

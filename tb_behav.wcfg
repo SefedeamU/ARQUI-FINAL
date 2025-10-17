@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="161.230 ns"></ZoomEndTime>
+      <Cursor1Time time="118.318 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="134"></NameColumnWidth>
+      <ValueColumnWidth column_width="83"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="5" />
+   <wvobject type="array" fp_name="/tb/a">
+      <obj_property name="ElementShortName">a[31:0]</obj_property>
+      <obj_property name="ObjectShortName">a[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">24</obj_property>
+      <obj_property name="radix_otherWidth">8</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/b">
+      <obj_property name="ElementShortName">b[31:0]</obj_property>
+      <obj_property name="ObjectShortName">b[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">24</obj_property>
+      <obj_property name="radix_otherWidth">8</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/ALUControl">
+      <obj_property name="ElementShortName">ALUControl[3:0]</obj_property>
+      <obj_property name="ObjectShortName">ALUControl[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/Result">
+      <obj_property name="ElementShortName">Result[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Result[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">FLOATINGPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">24</obj_property>
+      <obj_property name="radix_otherWidth">8</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/ALUFlags">
+      <obj_property name="ElementShortName">ALUFlags[4:0]</obj_property>
+      <obj_property name="ObjectShortName">ALUFlags[4:0]</obj_property>
+   </wvobject>
+</wave_config>
