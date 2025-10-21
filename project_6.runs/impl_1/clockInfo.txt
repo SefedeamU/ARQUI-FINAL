@@ -1,7 +1,7 @@
 -------------------------------------
-| Tool Version : Vivado v.2023.2
-| Date         : Fri Oct 17 17:12:56 2025
-| Host         : UTEC
+| Tool Version : Vivado v.2025.1
+| Date         : Sun Oct 19 11:34:26 2025
+| Host         : DESKTOP-0DKD4I4
 | Design       : design_1
 | Device       : xc7a35t-cpg236-1--
 -------------------------------------

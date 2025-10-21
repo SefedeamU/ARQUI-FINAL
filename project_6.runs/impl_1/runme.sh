@@ -4,13 +4,17 @@
 # Vivado(TM)
 # runme.sh: a Vivado-generated Runs Script for UNIX
 # Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-# Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+# Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 # 
 
+echo "This script was generated under a different operating system."
+echo "Please update the PATH and LD_LIBRARY_PATH variables below, before executing this script"
+exit
+
 if [ -z "$PATH" ]; then
-  PATH=/home/utec/Escritorio/FPGAs_AdaptiveSoCs_Unified_2023.2_1013_2256/Vivado/2023.2/ids_lite/ISE/bin/lin64:/home/utec/Escritorio/FPGAs_AdaptiveSoCs_Unified_2023.2_1013_2256/Vivado/2023.2/bin
+  PATH=D:/2025.1/Vitis/bin;D:/2025.1/Vivado/ids_lite/ISE/bin/nt64;D:/2025.1/Vivado/ids_lite/ISE/lib/nt64:D:/2025.1/Vivado/bin
 else
-  PATH=/home/utec/Escritorio/FPGAs_AdaptiveSoCs_Unified_2023.2_1013_2256/Vivado/2023.2/ids_lite/ISE/bin/lin64:/home/utec/Escritorio/FPGAs_AdaptiveSoCs_Unified_2023.2_1013_2256/Vivado/2023.2/bin:$PATH
+  PATH=D:/2025.1/Vitis/bin;D:/2025.1/Vivado/ids_lite/ISE/bin/nt64;D:/2025.1/Vivado/ids_lite/ISE/lib/nt64:D:/2025.1/Vivado/bin:$PATH
 fi
 export PATH
 
@@ -21,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='/home/utec/project_6/project_6.runs/impl_1'
+HD_PWD='C:/Users/Juan/Desktop/ARQUI-FINAL/project_6.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
@@ -38,7 +42,7 @@ EAStep()
 }
 
 # pre-commands:
-/bin/touch .write_bitstream.begin.rst
+/bin/touch .init_design.begin.rst
 EAStep vivado -log top_basys3.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source top_basys3.tcl -notrace
 
 

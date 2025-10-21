@@ -1,8 +1,8 @@
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date         : Fri Oct 17 17:12:56 2025
-| Host         : UTEC running 64-bit Ubuntu 22.04.5 LTS
+| Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
+| Date         : Sun Oct 19 11:34:24 2025
+| Host         : DESKTOP-0DKD4I4 running 64-bit major release  (build 9200)
 | Command      : report_drc -file top_basys3_drc_opted.rpt -pb top_basys3_drc_opted.pb -rpx top_basys3_drc_opted.rpx
 | Design       : top_basys3
 | Device       : xc7a35tcpg236-1
@@ -23,16 +23,16 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
            Ruledeck: default
-             Max violations: <unlimited>
-             Violations found: 5
-+----------+----------+-----------------------------------------------------+------------+
-| Rule     | Severity | Description                                         | Violations |
-+----------+----------+-----------------------------------------------------+------------+
-| CFGBVS-1 | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1          |
-| DPIP-1   | Warning  | Input pipelining                                    | 2          |
-| DPOP-1   | Warning  | PREG Output pipelining                              | 1          |
-| DPOP-2   | Warning  | MREG Output pipelining                              | 1          |
-+----------+----------+-----------------------------------------------------+------------+
+             Max checks: <unlimited>
+             Checks found: 5
++----------+----------+-----------------------------------------------------+--------+
+| Rule     | Severity | Description                                         | Checks |
++----------+----------+-----------------------------------------------------+--------+
+| CFGBVS-1 | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1      |
+| DPIP-1   | Warning  | Input pipelining                                    | 2      |
+| DPOP-1   | Warning  | PREG Output pipelining                              | 1      |
+| DPOP-2   | Warning  | MREG Output pipelining                              | 1      |
++----------+----------+-----------------------------------------------------+--------+
 
 2. REPORT DETAILS
 -----------------

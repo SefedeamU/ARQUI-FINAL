@@ -1,8 +1,8 @@
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version     : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date             : Fri Oct 17 17:13:23 2025
-| Host             : UTEC running 64-bit Ubuntu 22.04.5 LTS
+| Tool Version     : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
+| Date             : Sun Oct 19 11:36:06 2025
+| Host             : DESKTOP-0DKD4I4 running 64-bit major release  (build 9200)
 | Command          : report_power -file top_basys3_power_routed.rpt -pb top_basys3_power_summary_routed.pb -rpx top_basys3_power_routed.rpx
 | Design           : top_basys3
 | Device           : xc7a35tcpg236-1
@@ -53,12 +53,12 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.002 |        3 |       --- |             --- |
-| Slice Logic    |     0.015 |     1903 |       --- |             --- |
+| Slice Logic    |     0.015 |     1898 |       --- |             --- |
 |   LUT as Logic |     0.013 |     1524 |     20800 |            7.33 |
-|   CARRY4       |     0.001 |      203 |      8150 |            2.49 |
-|   Register     |    <0.001 |       94 |     41600 |            0.23 |
+|   CARRY4       |     0.001 |      205 |      8150 |            2.52 |
+|   Register     |    <0.001 |       92 |     41600 |            0.22 |
 |   Others       |     0.000 |       10 |       --- |             --- |
-| Signals        |     0.018 |     1775 |       --- |             --- |
+| Signals        |     0.018 |     1767 |       --- |             --- |
 | DSPs           |    <0.001 |        1 |        90 |            1.11 |
 | I/O            |     0.024 |       38 |       106 |           35.85 |
 | Static Power   |     0.072 |          |           |                 |
@@ -72,7 +72,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.044 |       0.035 |      0.010 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.045 |       0.035 |      0.010 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.014 |       0.001 |      0.013 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.008 |       0.007 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -142,7 +142,7 @@ Table of Contents
 | Name        | Power (W) |
 +-------------+-----------+
 | top_basys3  |     0.059 |
-|   dut       |     0.032 |
+|   dut       |     0.033 |
 |     u_add16 |     0.016 |
 |     u_mul16 |     0.002 |
 +-------------+-----------+

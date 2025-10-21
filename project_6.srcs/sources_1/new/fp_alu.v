@@ -2,17 +2,17 @@
 // Interfaz según especificación del proyecto.
 // flags[4:0] = {overflow, underflow, div_by_zero, invalid, inexact}
 module fp_alu (
-  input  wire        clk,
-  input  wire        rst,
-  input  wire        start,
-  input  wire        mode_fp,      // 0 = half (16 bits), 1 = single (32 bits)
-  input  wire [1:0]  round_mode,   // 00 = round-to-nearest-even (soportado)
-  input  wire [31:0] op_a,
-  input  wire [31:0] op_b,
-  input  wire [2:0]  op_code,      // 000 add, 001 sub, 010 mul, 011 div
-  output reg  [31:0] result,
-  output reg         valid_out,
-  output reg  [4:0]  flags         // {OVF, UDF, DBZ, INV, INX}
+  input  wire        clk,        // reloj principal de la Basys3
+  input  wire        rst,        // reset asíncrono
+  input  wire        start,      // pulso que indica "ejecutar operación"
+  input  wire        mode_fp,    // 0 = half (16 bits), 1 = single (32 bits)
+  input  wire [1:0]  round_mode, // modo de redondeo (00 = Round to Nearest Even)
+  input  wire [31:0] op_a,       // operando A
+  input  wire [31:0] op_b,       // operando B
+  input  wire [2:0]  op_code,    // código de operación (000=ADD, 001=SUB, 010=MUL, 011=DIV)
+  output reg  [31:0] result,     // resultado final (half o single)
+  output reg         valid_out,  // indica que el resultado está listo
+  output reg  [4:0]  flags       // banderas IEEE-754 {OVF, UDF, DBZ, INV, INX}
 );
 
   // Decode op_code

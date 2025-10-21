@@ -1,8 +1,8 @@
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date         : Fri Oct 17 17:13:03 2025
-| Host         : UTEC running 64-bit Ubuntu 22.04.5 LTS
+| Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
+| Date         : Sun Oct 19 11:34:40 2025
+| Host         : DESKTOP-0DKD4I4 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_basys3_control_sets_placed.rpt
 | Design       : top_basys3
 | Device       : xc7a35t
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              20 |           10 |
+| No           | No                    | No                     |              20 |           12 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |              11 |            8 |
 | Yes          | No                    | No                     |               0 |            0 |
-| Yes          | No                    | Yes                    |              21 |           20 |
-| Yes          | Yes                   | No                     |              32 |           24 |
+| Yes          | No                    | Yes                    |              21 |           18 |
+| Yes          | Yes                   | No                     |              32 |           20 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -74,10 +74,10 @@ Table of Contents
 |     Clock Signal     | Enable Signal | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
 +----------------------+---------------+------------------+------------------+----------------+--------------+
 |  CLK100MHZ_IBUF_BUFG |               | view_flags       |                8 |             11 |         1.38 |
-|  CLK100MHZ_IBUF_BUFG | pR            | pC               |               11 |             16 |         1.45 |
-|  CLK100MHZ_IBUF_BUFG | pU            | pC               |               13 |             16 |         1.23 |
-|  CLK100MHZ_IBUF_BUFG |               |                  |               10 |             20 |         2.00 |
-|  CLK100MHZ_IBUF_BUFG | start         | rst              |               20 |             21 |         1.05 |
+|  CLK100MHZ_IBUF_BUFG | pR            | pC               |                9 |             16 |         1.78 |
+|  CLK100MHZ_IBUF_BUFG | pU            | pC               |               11 |             16 |         1.45 |
+|  CLK100MHZ_IBUF_BUFG |               |                  |               12 |             20 |         1.67 |
+|  CLK100MHZ_IBUF_BUFG | start         | rst              |               18 |             21 |         1.17 |
 +----------------------+---------------+------------------+------------------+----------------+--------------+
 
 

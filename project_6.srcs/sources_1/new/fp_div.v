@@ -14,7 +14,7 @@ module fp_div #(parameter W=32, parameter E=8, parameter M=23) (
   localparam [E-1:0] EXP_MAX = (1<<E) - 1;
   localparam [E-1:0] BIAS    = (1<<(E-1)) - 1;
 
-  // Desempaque (sin [-:] de SV)
+  // Desempaque
   wire sa = a[W-1];
   wire sb = b[W-1];
   wire [E-1:0] ea = a[W-2 : W-E-1];  // [30:23] en single, [14:10] en half
@@ -45,12 +45,11 @@ module fp_div #(parameter W=32, parameter E=8, parameter M=23) (
 
   // División con precisión M+3 (para GRS)
   reg [M+3:0]   q;         // cociente (M+4 bits)
-  reg [M+3:0]   rem;       // residuo (guardado en mismo ancho por comodidad)
+  reg [M+3:0]   rem;       // residuo
   reg [2*M+3:0] dividend;  // (M+1) << (M+3) = 2M+4 bits
 
-  // Auxiliares para redondeo
-  reg [M:0] mant_plus1;
-  reg       carry_round;
+  // RNE helpers (fix con M+2 bits)
+  reg [M+1:0]   mant_ext;
 
   always @* begin
     // Defaults
@@ -75,52 +74,57 @@ module fp_div #(parameter W=32, parameter E=8, parameter M=23) (
     else begin
       // signo y exponente preliminar
       sgn      = sa ^ sb;
+      // cuidado con subnormales: ea==0 => usa 1 en vez de 0
       exp_work = (ea==0 ? 1 : ea) - (eb==0 ? 1 : eb) + BIAS;
 
-      // Dividend = ma << (M+3)
+      // Dividend = ma << (M+3)  (precisión para GRS)
       dividend = {ma, {(M+3){1'b0}}};
       q        = dividend / mb;
       rem      = dividend % mb;
 
-      // Normalización y GRS SIN índices "M±const-M" (evita error 10-1219)
-      // Caso A: 1.xxxxx -> MSB en q[M+3]
+      // ---------------- Normalización ----------------
+      // q[M+3]==1  => cociente en [1,2): NO tocar exp
+      // q[M+3]==0  => cociente en [0.5,1): desplazar izq (exp - 1)
       if (q[M+3]) begin
-        // Mantisa = q[M+3:3] (M+1 bits), G=q[2], R=q[1], S=q[0]|(rem!=0)
-        mant_work = q[M+3 : 3];
+        mant_work = q[M+3 : 3];                       // (M+1) bits
         grs       = { q[2], q[1], (q[0] | (|rem)) };
-        exp_work  = exp_work + 1;
       end else begin
-        // Caso B: 0.1xxxx -> tomar q[M+2:2]; G=q[1], R=q[0], S=(rem!=0)
         mant_work = q[M+2 : 2];
         grs       = { q[1], q[0], (|rem) };
-        // exp_work se mantiene
+        exp_work  = exp_work - 1;
       end
 
-      // RNE
+      // ---------------- RNE (fix M+2 bits) ----------------
       if (grs[2] && (grs[1] || grs[0] || mant_work[0])) begin
-        mant_plus1  = mant_work + {{M{1'b0}},1'b1};
-        carry_round = mant_plus1[M];
-        mant_work   = mant_plus1;
-        inx         = 1'b1;
-        if (carry_round) begin
-          mant_work = {1'b1, mant_work[M:1]};
+        mant_ext = {1'b0, mant_work} + {{(M+1){1'b0}},1'b1}; // (M+2) bits
+        inx = 1'b1;
+        if (mant_ext[M+1]) begin
+          mant_work = {1'b1, mant_ext[M+1:2]};
           exp_work  = exp_work + 1;
+        end else begin
+          mant_work = mant_ext[M:0];
         end
       end else begin
         inx = grs[2] | grs[1] | grs[0];
       end
 
-      // Empaquetado y flags
+      // ---- Forzar subnormal si exp==0 y el bit oculto quedó '1' ----
+      if (exp_work=={(E+1){1'b0}} && mant_work[M]==1'b1) begin
+        inx       = 1'b1;
+        mant_work = {1'b0, mant_work[M:1]}; // oculto->fracción
+      end
+
+      // ---------------- Empaquetado y flags ----------------------
       if (exp_work[E]) begin
-        y   = {sgn, {E{1'b1}}, {M{1'b0}}};
+        y   = {sgn, {E{1'b1}}, {M{1'b0}}};   // Inf
         ovf = 1'b1; inx = 1'b1;
       end else if (exp_work=={(E+1){1'b0}} && mant_work[M-1:0]=={M{1'b0}}) begin
-        y = {sgn, {E{1'b0}}, {M{1'b0}}};
+        y = {sgn, {E{1'b0}}, {M{1'b0}}};     // +0/-0
       end else if (exp_work=={(E+1){1'b0}} && mant_work[M-1:0]!={M{1'b0}}) begin
-        y   = {sgn, {E{1'b0}}, mant_work[M-1:0]};
+        y   = {sgn, {E{1'b0}}, mant_work[M-1:0]}; // subnormal
         udf = 1'b1; inx = 1'b1;
       end else begin
-        y = {sgn, exp_work[E-1:0], mant_work[M-1:0]};
+        y = {sgn, exp_work[E-1:0], mant_work[M-1:0]}; // normal
       end
     end
 

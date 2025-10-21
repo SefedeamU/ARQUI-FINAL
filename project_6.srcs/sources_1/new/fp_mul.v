@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 // fp_mul.v
-// IEEE-754 multiply (parametrico) con RNE.
+// IEEE-754 multiply (paramétrico) con RNE.
 // flags = {OVF, UDF, DBZ, INV, INX}
 module fp_mul #(parameter W=32, parameter E=8, parameter M=23) (
   input  wire [W-1:0] a,
@@ -9,8 +9,8 @@ module fp_mul #(parameter W=32, parameter E=8, parameter M=23) (
   output reg  [W-1:0] y,
   output reg  [4:0]   flags
 );
-  localparam EXP_MAX = (1<<E) - 1;
-  localparam BIAS    = (1<<(E-1)) - 1;
+  localparam [E-1:0] EXP_MAX = (1<<E) - 1;
+  localparam [E-1:0] BIAS    = (1<<(E-1)) - 1;
 
   wire sa = a[W-1];
   wire sb = b[W-1];
@@ -38,8 +38,11 @@ module fp_mul #(parameter W=32, parameter E=8, parameter M=23) (
   reg           sgn;
 
   // Normalización + GRS
-  reg [M:0] mant_work;
-  reg [2:0] grs;
+  reg [M:0]    mant_work;
+  reg [2:0]    grs;
+
+  // RNE helpers (fix con M+2 bits)
+  reg [M+1:0]  mant_ext;
 
   always @* begin
     // Defaults
@@ -48,7 +51,7 @@ module fp_mul #(parameter W=32, parameter E=8, parameter M=23) (
 
     // Casos especiales
     if (a_nan || b_nan || (a_zero && b_inf) || (a_inf && b_zero)) begin
-      y   = {1'b0, {E{1'b1}}, {1'b1, {(M-1){1'b0}}}}; // NaN
+      y   = {1'b0, {E{1'b1}}, {1'b1, {(M-1){1'b0}}}}; // qNaN
       inv = 1'b1;
     end
     else if (a_inf || b_inf) begin
@@ -65,36 +68,37 @@ module fp_mul #(parameter W=32, parameter E=8, parameter M=23) (
 
       // Normalización (dos casos)
       if (prod[2*M+1]) begin
-        // 1.xxx -> tomar [2M+1: M+1] como mantisa (M+1 bits)
+        // 1.xxx -> tomar [2M+1: M+1]
         mant_work = prod[2*M+1 : M+1];
         grs       = {prod[M], prod[M-1], |prod[M-2:0]};
         exp_work  = exp_work + 1;
       end else begin
-        // 0.1xx -> tomar [2M : M] como mantisa
+        // 0.1xx -> tomar [2M : M]
         mant_work = prod[2*M : M];
         grs       = {prod[M-1], prod[M-2], |prod[M-3:0]};
       end
 
-      // RNE
+      // RNE (fix M+2 bits)
       if (grs[2] && (grs[1] || grs[0] || mant_work[0])) begin
-        mant_work = mant_work + 1'b1;
+        mant_ext = {1'b0, mant_work} + {{(M+1){1'b0}},1'b1};
         inx = 1'b1;
-        if (mant_work[M]) begin
-          // Overflow en mantisa tras redondeo
-          mant_work = {1'b1, mant_work[M:1]};
+        if (mant_ext[M+1]) begin
+          mant_work = {1'b1, mant_ext[M+1:2]};
           exp_work  = exp_work + 1;
+        end else begin
+          mant_work = mant_ext[M:0];
         end
       end else begin
         inx = grs[2] | grs[1] | grs[0];
       end
 
       // Empaquetado y flags
-      if (exp_work[E]) begin
+      if (exp_work[E] || (exp_work[E-1:0] == EXP_MAX)) begin
         y   = {sgn, {E{1'b1}}, {M{1'b0}}}; // Inf
         ovf = 1'b1; inx = 1'b1;
-      end else if (exp_work==0 && mant_work[M-1:0]==0) begin
+      end else if (exp_work=={(E+1){1'b0}} && mant_work[M-1:0]=={M{1'b0}}) begin
         y = {sgn, {E{1'b0}}, {M{1'b0}}};
-      end else if (exp_work==0 && mant_work[M-1:0]!=0) begin
+      end else if (exp_work=={(E+1){1'b0}} && mant_work[M-1:0]!={M{1'b0}}) begin
         y   = {sgn, {E{1'b0}}, mant_work[M-1:0]}; // subnormal
         udf = 1'b1; inx = 1'b1;
       end else begin

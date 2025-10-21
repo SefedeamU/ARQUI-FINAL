@@ -1,8 +1,8 @@
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date         : Fri Oct 17 17:12:29 2025
-| Host         : UTEC running 64-bit Ubuntu 22.04.5 LTS
+| Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
+| Date         : Sun Oct 19 11:33:45 2025
+| Host         : DESKTOP-0DKD4I4 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file top_basys3_utilization_synth.rpt -pb top_basys3_utilization_synth.pb
 | Design       : top_basys3
 | Device       : xc7a35tcpg236-1
@@ -31,8 +31,8 @@ Table of Contents
 +-------------------------+------+-------+------------+-----------+-------+
 |        Site Type        | Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+------+-------+------------+-----------+-------+
-| Slice LUTs*             | 1435 |     0 |          0 |     20800 |  6.90 |
-|   LUT as Logic          | 1435 |     0 |          0 |     20800 |  6.90 |
+| Slice LUTs*             | 1440 |     0 |          0 |     20800 |  6.92 |
+|   LUT as Logic          | 1440 |     0 |          0 |     20800 |  6.92 |
 |   LUT as Memory         |    0 |     0 |          0 |      9600 |  0.00 |
 | Slice Registers         |   84 |     0 |          0 |     41600 |  0.20 |
 |   Register as Flip Flop |   84 |     0 |          0 |     41600 |  0.20 |
@@ -42,6 +42,7 @@ Table of Contents
 +-------------------------+------+-------+------------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
 Warning! LUT value is adjusted to account for LUT combining.
+Warning! For any ECO changes, please run place_design if there are unplaced instances
 
 
 1.1 Summary of Registers by Type
@@ -152,12 +153,12 @@ Warning! LUT value is adjusted to account for LUT combining.
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT3     |  597 |                 LUT |
-| LUT6     |  391 |                 LUT |
-| LUT5     |  246 |                 LUT |
-| CARRY4   |  203 |          CarryLogic |
-| LUT2     |  180 |                 LUT |
-| LUT4     |  123 |                 LUT |
+| LUT3     |  591 |                 LUT |
+| LUT6     |  402 |                 LUT |
+| LUT5     |  255 |                 LUT |
+| CARRY4   |  205 |          CarryLogic |
+| LUT2     |  170 |                 LUT |
+| LUT4     |  115 |                 LUT |
 | FDRE     |   63 |        Flop & Latch |
 | LUT1     |   41 |                 LUT |
 | IBUF     |   22 |                  IO |

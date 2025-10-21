@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1760739115" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/top.dcp">
-  <File Type="VDS-TIMING-PB" Name="top_basys3_timing_summary_synth.pb"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="top_basys3_timing_summary_synth.rpt"/>
-  <File Type="RDS-DCP" Name="top_basys3.dcp"/>
-  <File Type="RDS-UTIL-PB" Name="top_basys3_utilization_synth.pb"/>
-  <File Type="RDS-UTIL" Name="top_basys3_utilization_synth.rpt"/>
-  <File Type="RDS-PROPCONSTRS" Name="top_basys3_drc_synth.rpt"/>
-  <File Type="RDS-RDS" Name="top_basys3.vds"/>
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1760891529" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/top.dcp">
   <File Type="REPORTS-TCL" Name="top_basys3_reports.tcl"/>
+  <File Type="RDS-UTIL" Name="top_basys3_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="top_basys3_utilization_synth.pb"/>
   <File Type="PA-TCL" Name="top_basys3.tcl"/>
+  <File Type="RDS-RDS" Name="top_basys3.vds"/>
+  <File Type="RDS-DCP" Name="top_basys3.dcp"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/alu_controller.v">
@@ -93,9 +90,7 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-      <Desc>Vivado Synthesis Defaults</Desc>
-    </StratHandle>
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
     <Step Id="synth_design"/>
   </Strategy>
 </GenRun>

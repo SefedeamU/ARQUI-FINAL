@@ -1,0 +1,97 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Sun Oct 19 11:08:52 2025
+# Process ID         : 15712
+# Current directory  : C:/Users/Juan/Desktop/ARQUI-FINAL
+# Command line       : vivado.exe -gui_launcher_event rodinguilauncherevent9940 C:\Users\Juan\Desktop\ARQUI-FINAL\project_6.xpr
+# Log file           : C:/Users/Juan/Desktop/ARQUI-FINAL/vivado.log
+# Journal file       : C:/Users/Juan/Desktop/ARQUI-FINAL\vivado.jou
+# Running On         : DESKTOP-0DKD4I4
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26100
+# Processor Detail   : 13th Gen Intel(R) Core(TM) i7-13650HX
+# CPU Frequency      : 2803 MHz
+# CPU Physical cores : 14
+# CPU Logical cores  : 20
+# Host memory        : 16873 MB
+# Swap memory        : 10200 MB
+# Total Virtual      : 27074 MB
+# Available Virtual  : 6353 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/Juan/Desktop/ARQUI-FINAL/project_6.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+open_wave_config C:/Users/Juan/Desktop/ARQUI-FINAL/tb_behav.wcfg
+source tb.tcl
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+launch_runs impl_1 -jobs 10
+wait_on_run impl_1
+open_run impl_1
+close_sim
+launch_simulation
+open_wave_config C:/Users/Juan/Desktop/ARQUI-FINAL/tb_behav.wcfg
+source tb.tcl
+close_sim
+launch_simulation
+open_wave_config C:/Users/Juan/Desktop/ARQUI-FINAL/tb_behav.wcfg
+source tb.tcl
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+launch_runs impl_1 -jobs 10
+wait_on_run impl_1
+refresh_design
+close_sim
+launch_simulation
+open_wave_config C:/Users/Juan/Desktop/ARQUI-FINAL/tb_behav.wcfg
+source tb.tcl
+close_sim
+launch_simulation
+launch_simulation
+open_wave_config C:/Users/Juan/Desktop/ARQUI-FINAL/tb_behav.wcfg
+source tb.tcl
+save_wave_config {C:/Users/Juan/Desktop/ARQUI-FINAL/tb_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config C:/Users/Juan/Desktop/ARQUI-FINAL/tb_behav.wcfg
+source tb.tcl
+close_sim
+launch_simulation
+open_wave_config C:/Users/Juan/Desktop/ARQUI-FINAL/tb_behav.wcfg
+source tb.tcl
+close_sim
+launch_simulation
+open_wave_config C:/Users/Juan/Desktop/ARQUI-FINAL/tb_behav.wcfg
+source tb.tcl
+close_sim
+launch_simulation
+launch_simulation
+open_wave_config C:/Users/Juan/Desktop/ARQUI-FINAL/tb_behav.wcfg
+source tb.tcl
+save_wave_config {C:/Users/Juan/Desktop/ARQUI-FINAL/tb_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config C:/Users/Juan/Desktop/ARQUI-FINAL/tb_behav.wcfg
+source tb.tcl
+close_sim
+launch_simulation
+open_wave_config C:/Users/Juan/Desktop/ARQUI-FINAL/tb_behav.wcfg
+source tb.tcl
+save_wave_config {C:/Users/Juan/Desktop/ARQUI-FINAL/tb_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config C:/Users/Juan/Desktop/ARQUI-FINAL/tb_behav.wcfg
+source tb.tcl
+save_wave_config {C:/Users/Juan/Desktop/ARQUI-FINAL/tb_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config C:/Users/Juan/Desktop/ARQUI-FINAL/tb_behav.wcfg
+source tb.tcl
+save_wave_config {C:/Users/Juan/Desktop/ARQUI-FINAL/tb_behav.wcfg}
+close_sim

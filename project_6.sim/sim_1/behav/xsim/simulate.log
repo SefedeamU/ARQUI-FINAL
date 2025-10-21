@@ -1,0 +1,57 @@
+Time resolution is 1 ps
+=== INICIO TEST FP_ALU ===
+  FADD32 1.5+2.0 | A=0x3fc00000  B=0x40000000  -> Result=0x40600000  Flags=00000
+  PASS
+  FSUB32 2.0-1.0 | A=0x40000000  B=0x3f800000  -> Result=0x3f800000  Flags=00000
+  PASS
+  FMUL32 1.5*2.0 | A=0x3fc00000  B=0x40000000  -> Result=0x40400000  Flags=00000
+  PASS
+  FDIV32 1.0/2.0 | A=0x3f800000  B=0x40000000  -> Result=0x3f000000  Flags=00000
+  PASS
+> +Inf (DBZ,INX) | A=0x3f800000  B=0x00000000  -> Result=0x7f800000  Flags=00101
+  PASS
+Inf -> NaN (INV) | A=0x00000000  B=0x7f800000  -> Result=0x7fc00000  Flags=00010
+  PASS
+> +Inf (OVF,INX) | A=0x7f7fffff  B=0x7f7fffff  -> Result=0x7f800000  Flags=10001
+  PASS
+normal (UDF,INX) | A=0x00800000  B=0x40000000  -> Result=0x00400000  Flags=01001
+  PASS
+32 +0 + -0 -> -0 | A=0x00000000  B=0x80000000  -> Result=0x80000000  Flags=00000
+  PASS
+Inf -> NaN (INV) | A=0x7f800000  B=0x7f800000  -> Result=0x7fc00000  Flags=00010
+  PASS
+0x3EAAAAAB (INX) | A=0x3f800000  B=0x40400000  -> Result=0x3eaaaaab  Flags=00001
+  PASS
+     COMM32 FADD | y1=0x40000000 f1=00000  y2=0x40000000 f2=00000
+  PASS
+     COMM32 FMUL | y1=0xc0a00000 f1=00000  y2=0xc0a00000 f2=00000
+  PASS
+6 1.0h+2.0h=3.0h | A=0x3c00  B=0x4000  -> Result=0x4200  Flags=00000
+  PASS
+6 2.0h-1.0h=1.0h | A=0x4000  B=0x3c00  -> Result=0x3c00  Flags=00000
+  PASS
+6 1.5h*2.0h=3.0h | A=0x3e00  B=0x4000  -> Result=0x4200  Flags=00000
+  PASS
+6 1.0h/2.0h=0.5h | A=0x3c00  B=0x4000  -> Result=0x3800  Flags=00000
+  PASS
+ +Infh (DBZ,INX) | A=0x3c00  B=0x0000  -> Result=0x7c00  Flags=00101
+  PASS
+fh -> NaNh (INV) | A=0x0000  B=0x7c00  -> Result=0x7e00  Flags=00010
+  PASS
+ +Infh (OVF,INX) | A=0x7bff  B=0x7bff  -> Result=0x7c00  Flags=10001
+  PASS
+normal (UDF,INX) | A=0x0400  B=0x4000  -> Result=0x0200  Flags=01001
+  PASS
++0h + -0h -> -0h | A=0x0000  B=0x8000  -> Result=0x8000  Flags=00000
+  PASS
+ - +Infh -> NaNh | A=0x7c00  B=0x7c00  -> Result=0x7e00  Flags=00010
+  PASS
+ -> 0x3555 (INX) | A=0x3c00  B=0x4200  -> Result=0x3555  Flags=00001
+  PASS
+     COMM16 FADD | y1=0xbd00 f1=00000  y2=0xbd00 f2=00000
+  PASS
+     COMM16 FMUL | y1=0xbc00 f1=00000  y2=0xbc00 f2=00000
+  PASS
+=== FIN TEST ===  PASS=26  FAIL=0
+>>> TODO OK segun checks.
+$finish called at time : 781 ns : File "C:/Users/Juan/Desktop/ARQUI-FINAL/project_6.srcs/sim_1/new/tb_fp_alu.v" Line 211
